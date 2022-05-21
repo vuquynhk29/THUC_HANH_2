@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Add product</title>
+	<style>
+		.button {
+			font: bold 11px Arial;
+			text-decoration: none;
+			background-color: #EEEEEE;
+			color: #333333;
+			padding: 2px 6px 2px 6px;
+			border-top: 1px solid #CCCCCC;
+			border-right: 1px solid #333333;
+			border-bottom: 1px solid #333333;
+			border-left: 1px solid #CCCCCC;
+			margin-top: 16px;
+			cursor: pointer;
+		}
+		input{
+			width:50%;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Product</h1>
+	<form method="POST" th:object="${product}" >
+		<span class="error" style="color:red;"></span><br>
+		<label>Code </label>
+		<input type="text" name="code" th:field="*{code}" readonly="readonly"><br>
+		
+		<label>Description </label>
+		<input type="text" name="description" th:field="*{description}"><br>
+		
+		<label>Price </label>
+		<input type="text" name="price" th:field="*{price}"><br>
+		
+		<button type="submit" class="button">update product</button>
+		<a><a href="./displayProducts" class="button">View Product</a>
+	</form>
+	<script>
+		const dq = (name) => document.querySelector(name);
+		const code = dq('input[name="code"]');
+		const description = dq('input[name=description]');
+		const price = dq('input[name=price]');
+		const but = dq('.button');
+		const error = dq('.error');
+		but.addEventListener('click', (e) => {
+			if (code.value == "" || description.value == "" || price.value == "") {
+				e.preventDefault();
+				error.innerHTML = `Please fill all field`;
+				const text = document.getElementsByTagName('input');
+				for (let i = 0; i < text.length; i++) {
+					if (text[i].value == "") {
+						text[i].focus();
+						text[i].addEventListener('input', (e) => {
+							error.innerHTML = ``;
+						})
+						break;
+					}
+				}
+
+			}
+		});
+	</script>
+</body>
+
+</html>

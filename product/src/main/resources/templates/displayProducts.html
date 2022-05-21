@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    	table, tr, td{
+			border:1px solid;
+		}
+		.button {
+                font: bold 11px Arial;
+                text-decoration: none;
+                background-color: #EEEEEE;
+                color: #333333;
+                padding: 2px 6px 2px 6px;
+                border-top: 1px solid #CCCCCC;
+                border-right: 1px solid #333333;
+                border-bottom: 1px solid #333333;
+                border-left: 1px solid #CCCCCC;
+                margin-top: 16px;
+                cursor: pointer;
+            }
+    </style>
+</head>
+
+<body>
+    <h1>Products</h1>
+    <table>
+    	<tr>
+    		<th>Code</th>
+    		<th>Description</th>
+    		<th>Price</th>
+    		<th colspan="2"> control </th>
+    	</tr>
+    	
+	    <tr th:each= "product:${list}">
+	    		<td ><p th:text="${product.code}"></p></td>
+	    		<td><p th:text="${product.description}"></p></td>
+	    		<td ><p th:text="${product.price}"></p></td >
+	    		<td><a th:href="@{/edit(code=${product.code})}">edit</a></td>
+	    		<td><a th:href="@{/remove(code=${product.code})}">remove</a></td>
+	    </tr>
+    </table>
+    <a href="./addProduct" class="button">Add Product</a>
+</body>
+
+</html>

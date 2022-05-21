@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Add product</title>
+	<style>
+		.button {
+			font: bold 11px Arial;
+			text-decoration: none;
+			background-color: #EEEEEE;
+			color: #333333;
+			padding: 2px 6px 2px 6px;
+			border-top: 1px solid #CCCCCC;
+			border-right: 1px solid #333333;
+			border-bottom: 1px solid #333333;
+			border-left: 1px solid #CCCCCC;
+			margin-top: 16px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Product</h1>
+	<form method="POST">
+		<label>Code: </label>
+		<span th:text="${product.code}"}></span><br>
+
+		<label>Description: </label>
+		<span th:text="${product.description}"}></span><br>
+		<label>Price: </label>
+		<span th:text="${product.price}"}></span><br>
+		<button type="submit" class="button">Remove</button>
+		<a href="./displayProducts" class="button">Cancel</a>
+	</form>
+</body>
+
+</html>
